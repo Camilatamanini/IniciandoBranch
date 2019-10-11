@@ -17,9 +17,7 @@ namespace ListagemNomes.Controller
         /// <returns></returns>
         public IQueryable<Cadastro> GetCadastros()
         {
-            return contextDB
-                .ListaDeCadastros
-                .Where(x => x.Ativo == true);
+            return contextDB.ListaDeCadastros;
         }
         public bool AdicionarNomes (Cadastro parametroCadastro)
         {
@@ -27,7 +25,6 @@ namespace ListagemNomes.Controller
                 .IsNullOrWhiteSpace
                 (parametroCadastro.Nome))
                 return false;
-
             contextDB.ListaDeCadastros.Add(parametroCadastro);
             contextDB.SaveChanges();
 
